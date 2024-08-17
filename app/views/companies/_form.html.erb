@@ -1,0 +1,28 @@
+<%= form_with(model: company) do |form| %>
+  <% if company.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+        <% company.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="w-50">
+
+  <div class="form-group py-2">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+
+  </div>
+
+  <div class="d-flex">
+    <%= form.submit class: 'btn btn-primary'%>
+    <%= link_to 'Back', companies_path, class: 'btn btn-secondary mx-3' %>
+  </div>
+<% end %>
