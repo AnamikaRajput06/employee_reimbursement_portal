@@ -1,24 +1,58 @@
-# README
+# Employee Reimbursement Portal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of Contents
 
-Things you may want to cover:
+- [Install](#install)
+- [Usage](#usage)
 
-* Ruby version
+## Install
 
-* System dependencies
+### Ruby Application
 
-* Configuration
+Install rvm and use ruby-3.3.1
 
-* Database creation
+```
+curl -sSL https://get.rvm.io | bash
+rvm use ruby-3.3.1
 
-* Database initialization
+```
 
-* How to run the test suite
+Install postgresql and create the user postgres
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+create role postgres with password secret;
+# All this alter can be done in single step also ? Update this.
+alter role postgres with superuser;
+alter role postgres with login;
 
-* Deployment instructions
+```
 
-* ...
+Create database and Run the database migration and populate the seed data using following commands,
+
+```
+rails db:setup
+rails db:migrate
+```
+
+Refer the `seed.rb` file for user details
+
+### Sample data
+
+| User Email             | password  |
+| ---------------------- | --------- |
+| admin1@codemancers.com | admin@123 |
+| admin2@codemancers.com | admin@123 |
+
+Install the rails dependencies for the project,
+
+```
+bundle install
+```
+
+## Usage
+
+Start the rails server,
+
+```
+rails s
+```
